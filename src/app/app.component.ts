@@ -35,26 +35,25 @@ import { Component } from '@angular/core';
     <br>
     <br>
     <br>
-    <div [hidden] = hide_address>
-        {{street}}
+    <div>
+        <div [hidden] = hide_address>
+            {{street}}
+            <br>
+            {{city}}
+            {{region}}
+        </div>
         <br>
-        {{city}}
-        {{region}}
+        <button (click)="address_click()">Show/Hide Address</button>
+        <br>
+        <select #region_selector (change)="region_change(region_selector.value)">
+            <option>East</option>
+            <option>North</option>
+            <option>South</option>
+            <option>West</option>
+        </select>
+        <br>
+        <p>{{name}} is in the {{region}} region.</p>
     </div>
-    <br>
-    <button (click)="address_click()">Show/Hide Address</button>
-    <br>
-    <select #region_selector (change)="region_change(region_selector.value)">
-        <option>East</option>
-        <option>North</option>
-        <option>South</option>
-        <option>West</option>
-    </select>
-    <br>
-    <p>{{name}} is in the {{region}} region.</p>
-
-
-
   `, // templates are fragments, not whole html doc
 })
 
@@ -64,9 +63,9 @@ export class AppComponent  {
     image = 'favicon.ico';
     color = 'red';
 
-    street = "street";
-    city = "city";
-    region = "region";
+    street = "432 Anywhere Street";
+    city = "Jumbo";
+    region = "North";
 
     hide_address = false;
 
@@ -84,5 +83,6 @@ export class AppComponent  {
 
     address_click() {
         this.hide_address = this.hide_address === true ? false : true;
+        //this.hide_address = !this.hide_address; // This is how they did it
     }
 }
