@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 
@@ -7,7 +8,7 @@ import { AppComponent }  from './app.component';
 // this is a decorator
 // decorator thing
 @NgModule({
-  imports:      [ BrowserModule ], // What do I need?
+  imports:      [ BrowserModule, FormsModule ], // What do I need?
   declarations: [ AppComponent ], // what things are in my app?
   bootstrap:    [ AppComponent ] // Where do I start?
 })

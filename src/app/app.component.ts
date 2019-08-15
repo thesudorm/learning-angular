@@ -14,45 +14,38 @@ import { Component } from '@angular/core';
   selector: 'my-app', // to use me in html: <my-app>
   template: `
     <h1>{{name}}</h1>
+    <p><i>{{name}} is in the {{region}} region.</i></p>
+    <br>
     <fieldset>
-        <img [src]="image"/> <!-- Example of a data binding -->
+        <input [value]="name"><br>
+        <input [value]="name" (input)="name=$event.target.value"><br>
+        <input [value]="name" (keyup)="name=$event.target.value"><br>
+        <input [value]="name" (keyup.enter)="name=$event.target.value"
+                              (blur)="name=$event.target.value"><br>
+
+        <input [(ngModel)]="name"><br>
+        <input [ngModel]="name" (ngModelChange)="name=$event"><br>
     </fieldset>
-    <label [style.color] = "color">Favorite Color: </label>{{color}}
-    <button (click)="clicked()">Toggle Color</button>
-
-    <select (change)="colorChange($event.target.value)">
-        <option>Red</option>
-        <option>Blue</option>
-        <option>Green</option>
-    </select>
-
-    <select #color (change)="colorChange(color.value)">
-        <option>Red</option>
-        <option>Blue</option>
-        <option>Green</option>
-    </select>
-    <br>
-    <br>
-    <br>
-    <br>
     <div>
+        <label><input type="checkbox" [(ngModel)]="hide_address"> Hide Address</label>
+        <br>
+        <br>
         <div [hidden] = hide_address>
             {{street}}
             <br>
             {{city}}
             {{region}}
+            <br>
+
+            <select #region_selector (change)="region_change(region_selector.value)">
+                <option>East</option>
+                <option>North</option>
+                <option>South</option>
+                <option>West</option>
+        </select>
         </div>
         <br>
-        <button (click)="address_click()">Show/Hide Address</button>
         <br>
-        <select #region_selector (change)="region_change(region_selector.value)">
-            <option>East</option>
-            <option>North</option>
-            <option>South</option>
-            <option>West</option>
-        </select>
-        <br>
-        <p>{{name}} is in the {{region}} region.</p>
     </div>
   `, // templates are fragments, not whole html doc
 })
@@ -60,22 +53,12 @@ import { Component } from '@angular/core';
 // export lets other parts of the code to use it
 export class AppComponent  { 
     name = 'Alex Smith'; 
-    image = 'favicon.ico';
-    color = 'red';
 
     street = "432 Anywhere Street";
     city = "Jumbo";
     region = "North";
 
     hide_address = false;
-
-    clicked() {
-        this.color = this.color === 'red' ? 'blue' : 'red';
-    }
-
-    colorChange(color: string) {
-        this.color = color;
-    }
 
     region_change(region: string) {
         this.region = region;
