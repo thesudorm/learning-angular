@@ -1,0 +1,42 @@
+
+<h1>{{customer.name}}</h1>
+<p><i>{{customer.name}} is in the {{customer.address.region}} region.</i></p>
+<br>
+<fieldset>
+    <label>Name: <input [(ngModel)]="customer.name"></label><br>
+</fieldset>
+<div>
+    <label><input type="checkbox" [(ngModel)]="hide_address"> Hide Address</label>
+    <br>
+    <br>
+    <div [hidden] = hide_address>
+        {{customer.address.street}}
+        <br>
+        {{customer.address.city}}
+        {{customer.address.state}}
+        <br>
+        {{customer.address.region}}
+        <br>
+        <br>
+        <br>
+        <label>Street: <input [(ngModel)]="customer.address.street"></label><br>
+        <label>City: <input [(ngModel)]="customer.address.city"></label><br>
+        <label>State: 
+            <select [(ngModel)]="customer.address.state">
+                <option>Ohio</option>
+                <option>Michigan</option>
+                <option>California</option>
+            </select>
+        </label>
+        <label>Region: 
+            <select [(ngModel)]="customer.address.region">
+                <option>East</option>
+                <option>North</option>
+                <option>South</option>
+                <option>West</option>
+            </select>
+        </label>
+    </div>
+    <br>
+    <br>
+</div>
