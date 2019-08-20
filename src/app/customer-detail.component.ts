@@ -22,4 +22,6 @@ import { Customer } from './model';
 // export lets other parts of the code to use it
 export class CustomerDetailComponent  { 
     @Input() customer: Customer; 
+
+    hide_address = false;
 }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CustomerListComponent } from './customer-list.component';
 
 @Component({
     moduleId: module.id,
