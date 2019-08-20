@@ -8,7 +8,7 @@
 // '#' makes a template variable
 // $event is the DOM event that you can listen to
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 import { Customer } from './model';
 
@@ -22,6 +22,15 @@ import { Customer } from './model';
 // export lets other parts of the code to use it
 export class CustomerDetailComponent  { 
     @Input() customer: Customer; 
+    @Output() shift = new EventEmitter<number>();
+
+    right() {
+        this.shift.emit(1);
+    }
+
+    left() {
+        this.shift.emit(-1);
+    }
 
     hide_address = false;
 }

@@ -28,6 +28,13 @@ export class CustomerListComponent  {
 
     customer: Customer; 
 
+    shift(increment: number) {
+        let new_index = this.customers.findIndex(c => c === this.customer) + increment;
+
+        new_index = Math.min(this.customers.length -1, Math.max(0, new_index));
+        this.customer = this.customers[new_index];
+    }
+
     customers: Customer[] = [
         {
           id: 1,

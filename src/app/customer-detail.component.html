@@ -1,4 +1,8 @@
-<h1><button> <- </button>{{customer.name}}<button> -> </button></h1>
+<h1>
+    <button (click)="left()"> <- </button>
+    {{customer.name}}
+    <button (click)="right()"> -> </button>
+</h1>
 <div *ngIf="customer">
     <p><i>{{customer.name}} is in the {{customer.address.region}} region.</i></p>
     <br>
