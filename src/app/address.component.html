@@ -1,0 +1,30 @@
+<div>
+    <label><input type="checkbox" [(ngModel)]="hide_address"> Hide Address</label>
+    <br>
+    <br>
+    <div *ngIf ="!hide_address">
+        {{address.street}}
+        <br>
+        {{address.city}}
+        {{address.state}}
+        <br>
+        {{address.region}}
+        <br>
+        <br>
+        <br>
+        <label>Street: <input [(ngModel)]="address.street"></label><br>
+        <label>City: <input [(ngModel)]="address.city"></label><br>
+        <label>State: 
+            <select [(ngModel)]="address.state">
+                <option *ngFor="let state of states">{{state}}</option>
+            </select>
+        </label>
+        <label>Region: 
+            <select [(ngModel)]="address.region">
+                <option *ngFor="let region of regions">{{region}}</option>
+            </select>
+        </label>
+    </div>
+    <br>
+    <br>
+</div>

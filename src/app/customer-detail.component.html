@@ -6,34 +6,5 @@
     <fieldset>
         <label>Name: <input [(ngModel)]="customer.name"></label><br>
     </fieldset>
-    <div>
-        <label><input type="checkbox" [(ngModel)]="hide_address"> Hide Address</label>
-        <br>
-        <br>
-        <div *ngIf ="!hide_address">
-            {{customer.address.street}}
-            <br>
-            {{customer.address.city}}
-            {{customer.address.state}}
-            <br>
-            {{customer.address.region}}
-            <br>
-            <br>
-            <br>
-            <label>Street: <input [(ngModel)]="customer.address.street"></label><br>
-            <label>City: <input [(ngModel)]="customer.address.city"></label><br>
-            <label>State: 
-                <select [(ngModel)]="customer.address.state">
-                    <option *ngFor="let state of states">{{state}}</option>
-                </select>
-            </label>
-            <label>Region: 
-                <select [(ngModel)]="customer.address.region">
-                    <option *ngFor="let region of regions">{{region}}</option>
-                </select>
-            </label>
-        </div>
-        <br>
-        <br>
-    </div>
+    <address-comp [address]='customer.address'></address-comp>
 </div>

@@ -6,6 +6,7 @@ import { AppComponent }  from './app.component';
 
 import { CustomerListComponent }  from './customer-list.component';
 import { CustomerDetailComponent }  from './customer-detail.component';
+import { AddressComponent }  from './address.component';
 
 // this desribes the class that follows it
 // this is a decorator
@@ -15,7 +16,8 @@ import { CustomerDetailComponent }  from './customer-detail.component';
   declarations: [ 
     AppComponent,
     CustomerListComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    AddressComponent
   ], // what things are in my app?
   bootstrap:    [ AppComponent ] // Where do I start?
 })

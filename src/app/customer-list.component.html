@@ -7,10 +7,8 @@
             [ngClass] = "{selected: customer === cust}"
             (click)="customer = cust">{{cust.name}}</li>
     </ul>
-    <h1>{{customer.name}}</h1>
-
     <!-- Customer details -->
     <div *ngIf="customer">
-        <customer-detail></customer-detail>
+        <customer-detail [customer]='customer'></customer-detail>
     </div>
 </div>

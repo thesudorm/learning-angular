@@ -8,7 +8,7 @@
 // '#' makes a template variable
 // $event is the DOM event that you can listen to
 
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Customer } from './model';
 
@@ -21,10 +21,5 @@ import { Customer } from './model';
 
 // export lets other parts of the code to use it
 export class CustomerDetailComponent  { 
-    regions = ['East', 'North', 'West', 'South'];
-    states = ['California', 'Quebec', 'Jalisco', 'Illinois'];
-
-    customer: Customer; 
-
-    hide_address = false;
+    @Input() customer: Customer; 
 }
