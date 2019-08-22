@@ -8,10 +8,11 @@
 // '#' makes a template variable
 // $event is the DOM event that you can listen to
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Customer } from './model';
 import { DataService } from './data.service';
+import { LoggerService } from './logger.service';
 
 
 @Component({
@@ -22,17 +23,21 @@ import { DataService } from './data.service';
 })
 
 // export lets other parts of the code to use it
-export class CustomerListComponent  { 
+export class CustomerListComponent implements OnInit  { 
+    customers: Customer[];
+    customer: Customer; 
 
     regions = ['East', 'North', 'West', 'South'];
     states = ['California', 'Quebec', 'Jalisco', 'Illinois'];
     hide_address = false;
 
-    customer: Customer; 
+    constructor(private dataService: DataService, private loggerService: LoggerService){ }
 
-    customers: Customer[] = [
-
-    ];
+    //lifecycle goes here
+    ngOnInit(){
+        this.loggerService.log("Getting customer data");
+        this.customers = this.dataService.getCustomers();
+    }
 
     shift(increment: number) {
         let new_index = this.customers.findIndex(c => c === this.customer) + increment;

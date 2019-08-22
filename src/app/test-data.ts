@@ -1,4 +1,4 @@
-export createTestCustomers() {
+export function createTestCustomers() {
     return [
         {
           id: 1,
@@ -39,6 +39,6 @@ export createTestCustomers() {
             state: 'Illinois',
             region: 'Midwest'
           }
-        },
+        }
     ];
 }
