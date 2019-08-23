@@ -27,7 +27,7 @@ export class DataService {
                 return custs;
             },
             error => {
-                this.loggerService.log(`Error occured $(error)`);
+                this.loggerService.log("Error occured " + error);
                 return Promise.reject("Something went to shit.");
             });
         //var toReturn = createTestCustomers();

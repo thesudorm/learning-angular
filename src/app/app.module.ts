@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
 
@@ -18,6 +19,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 // decorator thing
 @NgModule({
   imports:      [ BrowserModule, FormsModule,
+    HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService)
   ], // What do I need?
   declarations: [ 
