@@ -10,11 +10,16 @@ import { AddressComponent }  from './address.component';
 import { DataService }  from './data.service';
 import { LoggerService } from './logger.service';
 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
 // this desribes the class that follows it
 // this is a decorator
 // decorator thing
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ], // What do I need?
+  imports:      [ BrowserModule, FormsModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
+  ], // What do I need?
   declarations: [ 
     AppComponent,
     CustomerListComponent,

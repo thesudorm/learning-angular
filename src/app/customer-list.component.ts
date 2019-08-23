@@ -26,6 +26,7 @@ import { LoggerService } from './logger.service';
 export class CustomerListComponent implements OnInit  { 
     customers: Customer[];
     customer: Customer; 
+    isBusy = false;
 
     regions = ['East', 'North', 'West', 'South'];
     states = ['California', 'Quebec', 'Jalisco', 'Illinois'];
@@ -35,8 +36,17 @@ export class CustomerListComponent implements OnInit  {
 
     //lifecycle goes here
     ngOnInit(){
+        this.getCustomers();
+    }
+
+    getCustomers() {
+        this.isBusy = true;
         this.loggerService.log("Getting customer data");
-        this.customers = this.dataService.getCustomers();
+        this.dataService.getCustomersP().then(custs => {
+        //this.dataService.getCustomers().subscribe(custs => {
+            this.isBusy = false;
+            this.customers = custs;
+        });
     }
 
     shift(increment: number) {
