@@ -5,9 +5,11 @@ import { LoggerService } from './logger.service';
 import { Customer } from './model';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/Observable/of';
+
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
@@ -30,24 +32,24 @@ export class DataService {
                 this.loggerService.log("Error occured " + error);
                 return Promise.reject("Something went to shit.");
             });
-        //var toReturn = createTestCustomers();
-
-        //return new Promise<Customer[]>(resolve => {
-            //setTimeout( () => {
-                //this.loggerService.log(toReturn.length.toString() + " customers received.");
-                //resolve(toReturn);
-            //}, 1500)
-        //});
     }
 
     getCustomers(): Observable<Customer[]>{
-        this.loggerService.log("Getting customers as a Observable..");
-        const customers = createTestCustomers();
 
-        return of(customers)
-            .delay(1500)
-            .do(() => {
-                this.loggerService.log(customers.length.toString() + " customers received.");
+        this.loggerService.log("Getting customers as an Observable via Http..");
+
+        return this.http.get(this.customersUrl)
+            .map(response => response.json().data as Customer[]) // maps response to an Observable
+            .do((custs) => {
+                this.loggerService.log(custs.length.toString() + " customers received.");
             })
-    }
+    //     this.loggerService.log("Getting customers as a Observable..");
+    //     const customers = createTestCustomers();
+
+    //     return of(customers)
+    //         .delay(1500)
+    //         .do(() => {
+    //             this.loggerService.log(customers.length.toString() + " customers received.");
+    //         })
+    // }
 }
